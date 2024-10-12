@@ -49,7 +49,6 @@ const resolvers = {
         // delete a task
         deleteTask: async (_, { id }) => {
             try {
-
                 if (!mongoose.Types.ObjectId.isValid(id)) throw new ApolloError("Task not found.", "INVALID_TASK_ID");;
 
                 const deletedTask = await Tasks.findByIdAndDelete(id);
@@ -57,7 +56,6 @@ const resolvers = {
                 if (!deletedTask) throw new ApolloError("Task not found.", "TASK_NOT_FOUND");
 
                 return deletedTask
-
             } catch (err) {
                 throw new ApolloError("Failed to delete task", "TASK_DELETION_FAILED", { err });
             }

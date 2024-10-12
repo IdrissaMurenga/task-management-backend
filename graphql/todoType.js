@@ -10,7 +10,6 @@ const typeDefs = `
     input AddTaskInput {
         text: String!
         completed: Boolean
-        createdAt: String
     }
     input UpdateTaskInput {
         text: String
