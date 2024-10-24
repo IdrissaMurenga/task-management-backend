@@ -26,8 +26,8 @@ export const todoResolvers = {
                     text,
                     completed,
                 })
-                console.log("Publishing new task:", newTask);
                 pubSub.publish('TASK_ADDED', { addedTask: newTask })
+                console.log("Publishing new task:", newTask);
                 return newTask
             } catch (err) {
                 throw new ApolloError("Failed to create task", "TASK_CREATION_FAILED", { err });
@@ -43,8 +43,6 @@ export const todoResolvers = {
                 const updateTask = await Tasks.findByIdAndUpdate({ _id: id }, { text, completed }, {new: true});
             
                 if (!updateTask) throw new ApolloError("Task not found.", "TASK_NOT_FOUND");
-
-                pubSub.publish('TASK_UPDATED', { updateTask });
                 
                 return updateTask;
 
@@ -61,8 +59,6 @@ export const todoResolvers = {
                 const deletedTask = await Tasks.findByIdAndDelete(id);
 
                 if (!deletedTask) throw new ApolloError("Task not found.", "TASK_NOT_FOUND");
-
-                pubSub.publish('TASK_DELETED', { deletedTask });
                 
                 return { message: "Task successfully deleted", id };
                 
@@ -77,16 +73,5 @@ export const todoResolvers = {
                 return pubSub.asyncIterator(['TASK_ADDED']);
             }
         },
-        updatedTask: {
-            subscribe: () => {
-                return pubSub.asyncIterator(['TASK_UPDATED'])
-            }
-        },
-        deletedTask: {
-            subscribe: () => {
-                return pubSub.asyncIterator(['TASK_DELETED'])
-            }
-        }
-
     }
 };
