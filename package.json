@@ -1,0 +1,31 @@
+{
+  "name": "task-management",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "module": "",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "lint": "eslint./*.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"**/*.{js,graphql,json,md}\"",
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "graphql": "^16.10.0",
+    "graphql-yoga": "^5.12.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.10.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.20.1",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.1"
+  }
+}
