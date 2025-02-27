@@ -1,11 +1,14 @@
 import userResolver from "./userResolver.js";
+import expenseResolver from "./expenseResolver.js";
 
 
 export const resolvers = {
     Query: {
-        ...userResolver.Query
+        ...userResolver.Query,
+        ...expenseResolver.Query
     },
     Mutation: {
-        ...userResolver.Mutation
+        ...userResolver.Mutation,
+        ...expenseResolver.Mutation
     }
 }

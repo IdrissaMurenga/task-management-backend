@@ -9,7 +9,7 @@ export const userType = `
         updatedAt: String
     }
     type Query {
-        user(email: String!): User
+        user: User
     }
     type AuthPayload {
         user: User
